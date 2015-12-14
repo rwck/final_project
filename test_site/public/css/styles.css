@@ -1,0 +1,23 @@
+* {
+}
+
+h1 {
+  text-align: center;
+}
+
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
+  height: 100vh;
+}
+
+.switched-on {
+  background-color: yellow;
+  color: blue;
+}
+
+.switched-off {
+  background-color: blue;
+  color: yellow;
+}

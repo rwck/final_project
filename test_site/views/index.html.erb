@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <title>Hi from Sinatra and Arduino</title>
+  <%= include_gon %>
+    <title>Document</title>
+</head>
+<div class="main-container">
+
+  <body>
+    <h1>Title goes here</h1>
+    The switch is currently in the
+    <%= text %>
+      position
+      <p>
+        The light level at the moment is
+        <%= lightLevel %>
+      </p>
+      <p>
+        The temperature sensor reading is
+        <%= temperature %>
+      </p>
+  </body>
+</div>
+
+<script src="js/main.js"></script>
+
+</html>
