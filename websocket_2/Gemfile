@@ -1,0 +1,6 @@
+gem 'rubygems'
+gem 'bundler/setup'
+gem 'puma'
+gem 'faye'
+gem 'faye/websocket'
+

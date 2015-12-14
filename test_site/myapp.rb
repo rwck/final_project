@@ -1,6 +1,6 @@
+require 'rubygems'
 require 'sinatra'
 require 'tilt/erb'
-require 'rubygems'
 require 'arduino_firmata'
 require 'gon-sinatra'
 require 'sinatra/reloader' if development?
@@ -14,16 +14,7 @@ Tilt.register Tilt::ERBTemplate, 'html.erb'
 
 # configure :production do
 enable :reloader
-# end
 
-# t1 = Thread.new do
-#   loop do
-#   if arduino.digital_read 8
-#     puts "pin 8 is on"
-#   else
-#     puts "pin 8 is off"
-#   end
-# end
 
 set :environment, :development
 # set :environment, :production
@@ -48,8 +39,9 @@ get '/' do
     text = "off"
   end
 
+  @bob = "bob"
+
   gon.text = text
   puts "The switch is currently #{gon.text}"
   erb :index, :locals => {text: text, lightLevel: light_level, temperature: temperature}
 end
-# t1.join
