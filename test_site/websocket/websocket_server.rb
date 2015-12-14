@@ -1,22 +1,32 @@
 require 'faye/websocket'
 
-App = lambda do |env|
-  if Faye::WebSocket.websocket?(env)
-    ws = Faye::WebSocket.new(env)
-    
+module MyChat
 
-    ws.on :message do |event|
-      ws.send(event.data)
+  class WebSocketServer
+
+    def initialize(app)
+      @app = app
     end
 
-    ws.on :close do |event|
-      p [:close, event.code, event.reason]
-      ws = nil
+    def call(env)
+      if Faye::WebSocket.websocket?(env)
+        ws = Faye::WebSocket.new(env)
+
+
+        ws.on :message do |event|
+          ws.send(event.data)
+        end
+
+        ws.on :close do |event|
+          p [:close, event.code, event.reason]
+          ws = nil
+        end
+
+        return ws.rack_response
+
+      else
+        @app.call(env)
+      end
     end
-
-    return ws.rack_response
-
-  else
-    return [200, { 'Content-Type' => 'text/plain' }, ["Hello from the server"]]
   end
 end

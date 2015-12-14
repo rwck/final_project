@@ -4,23 +4,13 @@ require 'puma'
 require 'faye'
 require 'faye/websocket'
 require_relative 'websocket_server'
+require_relative 'sinatra_sockets'
 
-# use Faye::RackAdapter, :mount => '/faye', :timeout => 25
 
 Faye::WebSocket.load_adapter('puma')
 
-# run App
+use Faye::RackAdapter, :mount => '/foo', :timeout => 25
 
+use MyChat::WebSocketServer
 
-
-# require 'rubygems'
-# require 'bundler/setup'
-# require 'puma'
-# require 'faye'
-# require 'faye/websocket'
-# require_relative 'websocket_server'
-#
-# Faye::WebSocket.load_adapter('Puma')
-#
-app = Faye::RackAdapter.new(:mount => '/faye', :timeout => 25)
-run app
+run MyChat::SinatraApp

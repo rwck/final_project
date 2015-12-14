@@ -19,3 +19,8 @@ publication.then(function() {
 }, function(error) {
   console.log("There was a problem: " + error.message);
 });
+
+client.onmessage = function(e) {
+  console.log(e.data);
+  myMesssage = e.data;
+}

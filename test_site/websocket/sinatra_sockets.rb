@@ -6,18 +6,17 @@ require 'gon-sinatra'
 require 'sinatra/reloader' if development?
 
 module MyChat
-  class App < Sinatra::Base
+  class SinatraApp < Sinatra::Base
 
     arduino = ArduinoFirmata.connect
     arduino.pin_mode 8, ArduinoFirmata::INPUT
 
-    Sinatra::register Gon::Sinatra
+    register Gon::Sinatra
 
     Tilt.register Tilt::ERBTemplate, 'html.erb'
 
     # configure :production do
     enable :reloader
-
 
     set :environment, :development
     # set :environment, :production
@@ -25,7 +24,6 @@ module MyChat
 
     get '/' do
       light_level = arduino.analog_read 0
-      # puts arduino.analog_read 0
       puts "The light level is currently #{light_level}"
       gon.light_level = light_level
 
@@ -41,8 +39,6 @@ module MyChat
       else
         text = "off"
       end
-
-      @bob = "bob"
 
       gon.text = text
       puts "The switch is currently #{gon.text}"
