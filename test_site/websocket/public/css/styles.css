@@ -1,8 +1,15 @@
 * {
+  box-sizing: border-box;
+  border: 1px dotted pink;
 }
 
 h1 {
   text-align: center;
+}
+
+#chat-text {
+  background-color: white;
+  min-height: 2rem;
 }
 
 .main-container {

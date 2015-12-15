@@ -22,6 +22,8 @@ module MyChat
     # set :environment, :production
     # set :bind, '192.168.1.2'
 
+
+
     get '/' do
       light_level = arduino.analog_read 0
       puts "The light level is currently #{light_level}"
@@ -44,5 +46,13 @@ module MyChat
       puts "The switch is currently #{gon.text}"
       erb :index, :locals => {text: text, lightLevel: light_level, temperature: temperature}
     end
+
+    get '/sockets' do
+      # "Hello world"
+      erb :sockets
+    end
+
+
+
   end
 end

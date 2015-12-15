@@ -1,6 +1,11 @@
 var scheme = "ws://";
-var uri = scheme + window.document.location.host + "/";
-var ws = new WebSocket(uri);
+var uri = scheme + window.document.location.host + "/foo";
+ws = new WebSocket(uri);
+
+ws.onopen = function(event) {
+  ws.send("This message is coming from onopen in application.js");
+  console.log("Message has been sent from ws.onopen");
+}
 
 ws.onmessage = function(message) {
   var data = JSON.parse(message.data);
@@ -12,8 +17,9 @@ ws.onmessage = function(message) {
 
 $("#input-form").on("submit", function(event) {
   event.preventDefault();
-  var handle = $("#input-handle")[0].value;
+  alert("form is firing");
+  // var handle = $("#input-handle")[0].value;
   var text   = $("#input-text")[0].value;
-  ws.send(JSON.stringify({ handle: handle, text: text }));
+  ws.send(JSON.stringify({text: text }));
   $("#input-text")[0].value = "";
 });
