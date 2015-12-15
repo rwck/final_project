@@ -17,23 +17,23 @@ client.addExtension(Logger);
 // bob = "thing"
 // console.log(Bob);
 
-var subscription = client.subscribe('/foo', function(message) {
-  console.log(message);
+var subscription = client.subscribe('/arduino', function(message) {
+  console.log("Sensors", message);
 });
 
 subscription.then(function() {
   console.log("Subscription is now active!");
+  var publication = client.publish('/arduino', {text: "Hi There"});
+  publication.then(function() {
+    console.log("message sent to the server");
+  }, function(error) {
+    console.log("There was a problem: " + error.message);
+  });
 });
 
-var publication = client.publish('/foo', {text: "Hi There"});
-
-publication.then(function() {
-  console.log("message sent to the server");
-}, function(error) {
-  console.log("There was a problem: " + error.message);
-});
-
-client.onmessage = function(e) {
-  console.log(e.data);
-  myMesssage = e.data;
-}
+//
+//
+// client.onmessage = function(e) {
+//   console.log(e.data);
+//   myMesssage = e.data;
+// }

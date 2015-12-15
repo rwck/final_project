@@ -15,7 +15,7 @@ EM.run do
   ws.on :open do |_event|
     p [:open]
     puts 'Message from client: Socket opened'
-    ws.send({value: 'yay', channel: 'test'}.to_json)
+    # ws.send({ligh}.to_json)
   end
 
   ws.on :message do |event|
@@ -34,17 +34,19 @@ EM.run do
     ws = nil
   end
 
-#   EM.add_periodic_timer(1) do
-#     # (1..5).each {|n| ws.send(n)}
-#     # ws.send("Something to be sent")
-#
-#     p 'sending'
-#     ws.send(value: "YAY")
-# #    ws.send({value: arduino_read})
-# #    puts arduino_read
-#
-#
-#     # (1..5).each {|n| puts "boo " + n.to_s}
-#     # puts 'boo'
-#   end
+  EM.add_periodic_timer(1) do
+    # (1..5).each {|n| ws.send(n)}
+    # ws.send("Something to be sent")
+    if ws
+      p 'sending'
+
+      ws.send({ light: arduino_read, temp: rand(20..30), channel: '/arduino' }.to_json)
+      end
+
+    #    ws.send({value: arduino_read})
+    #    puts arduino_read
+
+    # (1..5).each {|n| puts "boo " + n.to_s}
+    # puts 'boo'
+  end
 end
