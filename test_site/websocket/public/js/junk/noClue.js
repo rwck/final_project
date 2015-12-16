@@ -1,12 +1,12 @@
-var client = new Faye.Client("http://localhost:9292/foo", {timeout: 120, retry: 5});
+var client = new Faye.Client("http://localhost:9292/faye", {timeout: 120, retry: 5});
 
-var subscription = client.subscribe('/foo');
+var subscription = client.subscribe('/faye');
 
 subscription.then(function() {
   console.log("something's up")
 })
 
-var publication = client.publish("/foo", {text: "Hi there"});
+var publication = client.publish("/faye", {text: "Hi there"});
 
 publication.then(function() {
   alert("Message sent to server")

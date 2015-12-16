@@ -1,5 +1,5 @@
 var scheme = "ws://";
-var uri = scheme + window.document.location.host + "/foo";
+var uri = scheme + window.document.location.host + "/faye";
 ws = new WebSocket(uri);
 
 ws.onopen = function(event) {

@@ -13,7 +13,7 @@ Faye::WebSocket.load_adapter('puma')
 Faye.logger = Logger.new(STDOUT)
 # Faye.logger = Logger::INFO
 
-use Faye::RackAdapter, :mount => '/foo', :timeout => 25
+use Faye::RackAdapter, :mount => '/faye', :timeout => 25
 
 
 

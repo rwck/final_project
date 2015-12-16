@@ -10,7 +10,7 @@ def arduino_read
 end
 
 EM.run do
-  ws = Faye::WebSocket::Client.new('ws://localhost:9292/foo')
+  ws = Faye::WebSocket::Client.new('ws://localhost:9292/faye')
 
   ws.on :open do |_event|
     p [:open]
@@ -34,19 +34,13 @@ EM.run do
     ws = nil
   end
 
-  EM.add_periodic_timer(1) do
-    # (1..5).each {|n| ws.send(n)}
-    # ws.send("Something to be sent")
+  EM.add_periodic_timer(0.5) do
+
     if ws
       p 'sending'
 
-      ws.send({ light: arduino_read, temp: rand(20..30), channel: '/arduino' }.to_json)
+      ws.send({data: {light: arduino_read, temp: rand(20..30)}, channel: '/arduino' }.to_json)
       end
 
-    #    ws.send({value: arduino_read})
-    #    puts arduino_read
-
-    # (1..5).each {|n| puts "boo " + n.to_s}
-    # puts 'boo'
   end
 end

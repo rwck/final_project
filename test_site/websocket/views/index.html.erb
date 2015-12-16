@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1 maximum-scale=1" name="viewport">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="js/c3-0.4.10/c3.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
   <title>Hi from Sinatra and Arduino</title>
   <%= include_gon %>
@@ -27,29 +28,28 @@
       </p>
       <%= @bob %>
 
-      <div id="chat-text"></div>
+        <div id="blob">
 
-      <form>
-      <!--   <input type="text" id="chat-text" placeholder="Chat text"> -->
-        <input type="text" id="input-text" placeholder="Input text">
-        <button type="submit">Submit</button>
+        </div>
 
-
-      </form>
-
-
-
-
+        <div>
+          <h1>Light intensity</h1>
+          <div id="chart"></div>
+        </div>
   </body>
 </div>
 
-
+<script src="js/underscore/underscore-min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/faye/faye.js"></script>
 <script src="js/socket.js"></script>
 <script src="js/application.js"></script>
+<script src="js/readingOnPage.js"></script>
+<script src="js/d3Stuff/d3.min.js"></script>
+<script src="js/c3-0.4.10/c3.min.js"></script>
+<script src="js/chart.js"></script>
 
-<!-- <script src="js/noClue.js"></script> -->
+
 
 
 </html>
