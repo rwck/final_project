@@ -14,8 +14,8 @@
 <div class="main-container">
 
   <body>
-    <h1>Title goes here</h1>
-    The switch is currently in the
+    <h1>Arduino Light Meter</h1>
+    <!-- The switch is currently in the
     <%= text %>
       position
       <p>
@@ -26,16 +26,20 @@
         The temperature sensor reading is
         <%= temperature %>
       </p>
-      <%= @bob %>
-
+      <%= @bob %> -->
+    <!--
         <div id="blob">
 
-        </div>
+        </div> -->
 
-        <div>
-          <h1>Light intensity</h1>
-          <div id="chart"></div>
-        </div>
+    <div>
+      <h1>Current Light intensity</h1>
+      <div id="chart"></div>
+    </div>
+    <div>
+      <h1>Current temperature</h1>
+      <div id="temp-chart"></div>
+    </div>
   </body>
 </div>
 
@@ -48,8 +52,6 @@
 <script src="js/d3Stuff/d3.min.js"></script>
 <script src="js/c3-0.4.10/c3.min.js"></script>
 <script src="js/chart.js"></script>
-
-
-
+<script src="js/tempChart.js"></script>
 
 </html>

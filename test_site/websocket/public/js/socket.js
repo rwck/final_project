@@ -44,6 +44,11 @@ var subscription = client.subscribe('/arduino', function(data) {
       ['data', (data.light/1024) * 100]
     ]
   });
+  myTempChart.chart.load({
+    columns: [
+      ['data', (5.0 * data.temp * 10) / 1024]
+    ]
+  });
 });
 
 // subscription.then(function() {

@@ -1,9 +1,9 @@
-var myChart = {
+var myTempChart = {
   chart: c3.generate({
-    bindto: "#chart",
+    bindto: "#temp-chart",
     data: {
       columns: [
-        ["data", 56]
+        ["data", 30]
       ],
       type: "gauge",
       onclick: function(d, i) {
@@ -19,14 +19,14 @@ var myChart = {
     gauge: {
              label: {
                  format: function(value, ratio) {
-                     return value.toFixed(2) + '%';
+                     return value.toFixed(2) + '°';
                  },
                  show: false // to turn off the min/max labels.
              },
          min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
          max: 100, // 100 is default
-         units: ' %',
-         width: 39 // for adjusting arc thickness
+         units: ' % ',
+         width: 50 // for adjusting arc thickness
     },
     color: {
       pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
@@ -40,4 +40,4 @@ var myChart = {
       height: 250
     }
   })
-}
+};

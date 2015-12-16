@@ -3,11 +3,17 @@ require 'arduino_firmata'
 require 'eventmachine'
 require 'json'
 
-def arduino_read
+def arduino_read_light
   arduino = ArduinoFirmata.connect
-  arduino.pin_mode 8, ArduinoFirmata::INPUT
+  # arduino.pin_mode 8, ArduinoFirmata::INPUT
   light_level = arduino.analog_read 0
 end
+
+def arduino_read_temp
+  arduino = ArduinoFirmata.connect
+  temp_level = arduino.analog_read 1
+end
+
 
 EM.run do
   ws = Faye::WebSocket::Client.new('ws://localhost:9292/faye')
@@ -39,8 +45,7 @@ EM.run do
     if ws
       p 'sending'
 
-      ws.send({data: {light: arduino_read, temp: rand(20..30)}, channel: '/arduino' }.to_json)
+      ws.send({data: {light: arduino_read_light, temp: arduino_read_temp}, channel: '/arduino' }.to_json)
       end
-
   end
 end
